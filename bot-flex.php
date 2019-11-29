@@ -69,7 +69,7 @@ if ( sizeof($request_array['events']) > 0 ) {
   if($postback == "Data 1") {
     foreach ($request_array['events'] as $event) {
          $reply_message = '';
-         $reply_token = $event['replyToken'];
+         $reply_token = "Ca106f3bc4d5fca2bdcac81cb62a393f6"//$event['replyToken'];
          $text = $event['message']['text'];
          $data = [
              'replyToken' => $reply_token,
@@ -84,7 +84,7 @@ if ( sizeof($request_array['events']) > 0 ) {
    elseif($postback == "Data 2") {
     foreach ($request_array['events'] as $event) {
          $reply_message = '';
-         $reply_token = $event['replyToken'];
+         $reply_token = "Ca106f3bc4d5fca2bdcac81cb62a393f6"//$event['replyToken'];
          $text = $event['message']['text'];
          $data = [
              'replyToken' => $reply_token,
@@ -99,7 +99,7 @@ if ( sizeof($request_array['events']) > 0 ) {
    elseif($postback == "Data 3") {
     foreach ($request_array['events'] as $event) {
          $reply_message = '';
-         $reply_token = $event['replyToken'];
+         $reply_token = "Ca106f3bc4d5fca2bdcac81cb62a393f6"//$event['replyToken'];
          $text = $event['message']['text'];
          $data = [
              'replyToken' => $reply_token,
@@ -111,11 +111,11 @@ if ( sizeof($request_array['events']) > 0 ) {
          echo "Result: ".$send_result."\r\n";
      }
    }
-   
+
   if(strpos($string, $word) === FALSE) {
    foreach ($request_array['events'] as $event) {
         $reply_message = '';
-        $reply_token = $event['replyToken'];
+        $reply_token = "Ca106f3bc4d5fca2bdcac81cb62a393f6"//$event['replyToken'];
         $text = $event['message']['text'];
         $data = [
             'replyToken' => $reply_token,
@@ -131,7 +131,7 @@ if ( sizeof($request_array['events']) > 0 ) {
     foreach ($request_array['events'] as $event) {
         error_log(json_encode($event));
         $reply_message = '';
-        $reply_token = $event['replyToken'];
+        $reply_token = "Ca106f3bc4d5fca2bdcac81cb62a393f6"//$event['replyToken'];
         $data = [
             'replyToken' => $reply_token,
             'messages' => [$jsonFlex]
