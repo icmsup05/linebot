@@ -21,8 +21,8 @@ $opts = array(
   $context = stream_context_create($opts);
   $profile_json = file_get_contents('https://api.line.me/v2/bot/profile/'.$user_id,false,$context);
   $profile_array = json_decode($profile_json,true);
-  $pic_ = $profile_array['pictureUrl'];
-  $name_ = $profile_array['displayName'];
+  $pic_ = $profile_array[pictureUrl];
+  $name_ = $profile_array[displayName];
 //$mass = $user_id.','.$message.','.$name_;
 
 $jsonFlex = [
