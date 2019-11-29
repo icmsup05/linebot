@@ -22,7 +22,7 @@ $opts = [
   $profile_array = json_decode($profile_json,true);
   $pic_ = $profile_array["pictureUrl"];
   $name_ = $profile_array["displayName"];
-//$mass = $user_id.','.$message.','.$name_;
+
 
 $jsonFlex = [
    "type" => "template",
@@ -61,7 +61,8 @@ $string = $request_array["events"][0]["message"]["text"];
 $word = "แจ้งเตือนการปิด CRQ";
 
 $postback = $request_array["events"][0]["postback"]["data"];
-$mass = $user_id.','.$pic_.','.$name_.','.$postback;
+$datetimenow = date("YmdHis");
+$mass = $datetimenow.','.$user_id.','.$name_.','.$pic_.','.$postback;
 
 if ( sizeof($request_array['events']) > 0 ) {
   if(strpos($string, $word) === FALSE) {
