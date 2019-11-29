@@ -12,12 +12,11 @@ $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 
 $user_id = $request_array["events"][0]["source"]["userId"];
-$opts = array(
-  'http'=>array(
-   'header'=>"Content-Type: application/json\r\n" .
-             "Authorization: Bearer" . $ACCESS_TOKEN
-    )
-  );
+$opts = [
+  "http" =>[
+  "header" => "Content-Type: application/json\r\n".'Authorization: Bearer wcbYASYnOZ9dWKt8Nt2tmnXaD6tJtPnRMGrNBZ7L4J1fJR6fgZsNnGmCu5G7ZISnLXFi16+sWIj8NnyIwgpCXCAIVWnEL0nOtj0sMHPJR9Fc8DM1ceVzrC6r9TEjUrYcThIVU4vvHiwGL15tUE85lAdB04t89/1O/w1cDnyilFU='
+  ]
+  ];
   $context = stream_context_create($opts);
   $profile_json = file_get_contents('https://api.line.me/v2/bot/profile/'.$user_id,false,$context);
   $profile_array = json_decode($profile_json,true);
