@@ -66,22 +66,7 @@ $mass = $datetimenow.','.$user_id.','.$name_.','.$pic_.','.$postback;
 $masscheck = $name_.','.$pic_;
 
 if ( sizeof($request_array['events']) > 0 ) {
-  if(strpos($string, $word) === FALSE) {
-   foreach ($request_array['events'] as $event) {
-        $reply_message = '';
-        $reply_token = $event['replyToken'];
-        $text = $event['message']['text'];
-        $data = [
-            'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => json_encode($request_array).$masscheck ]]  //Debug Detail message
-            //'messages' => [['type' => 'text', 'text' => $masscheck ]]
-        ];
-        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
-        echo "Result: ".$send_result."\r\n";
-    }
-  }
-  elseif($postback == "Data 1") {
+  if($postback == "Data 1") {
     foreach ($request_array['events'] as $event) {
          $reply_message = '';
          $reply_token = $event['replyToken'];
@@ -126,6 +111,22 @@ if ( sizeof($request_array['events']) > 0 ) {
          echo "Result: ".$send_result."\r\n";
      }
    }
+   
+  if(strpos($string, $word) === FALSE) {
+   foreach ($request_array['events'] as $event) {
+        $reply_message = '';
+        $reply_token = $event['replyToken'];
+        $text = $event['message']['text'];
+        $data = [
+            'replyToken' => $reply_token,
+            'messages' => [['type' => 'text', 'text' => json_encode($request_array).$masscheck ]]  //Debug Detail message
+            //'messages' => [['type' => 'text', 'text' => $masscheck ]]
+        ];
+        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+        echo "Result: ".$send_result."\r\n";
+    }
+  }
   else {
     foreach ($request_array['events'] as $event) {
         error_log(json_encode($event));
