@@ -13,7 +13,7 @@ $request_array = json_decode($request, true);   // Decode JSON to Array
 
 $jsonFlex = [
    "type" => "template",
-    "altText" => "this is a carousel template",
+    "altText" => "แบบประเมินความพึงพอใจการให้บริการ",
     "template" => [
       "type" => "carousel",
       "actions" => [],
@@ -44,10 +44,10 @@ $jsonFlex = [
     ]
 ];
 
-$string = $jsonData["events"][0]["message"]["text"];
+$string = $request_array["events"][0]["message"]["text"];
 $word = "แจ้งเตือนการปิด CRQ";
 
-//$postback = $jsonData["events"][0]["actions"]["postback"];
+//$postback = $request_array["events"][0]["actions"]["postback"];
 
 if ( sizeof($request_array['events']) > 0 ) {
   if(strpos($string, $word) === FALSE) {
