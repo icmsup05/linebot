@@ -69,10 +69,10 @@ if ( sizeof($request_array['events']) > 0 ) {
   if($postback == "Data 1") {
     foreach ($request_array['events'] as $event) {
          $reply_message = '';
-         $reply_token = "Ca106f3bc4d5fca2bdcac81cb62a393f6";
+         $reply_token = $event['replyToken'];
          $text = $event['message']['text'];
          $data = [
-             'groupId' => $reply_token,
+             'replyToken' => $reply_token,
              //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
              'messages' => [['type' => 'text', 'text' => $mass ]]
          ];
@@ -84,10 +84,10 @@ if ( sizeof($request_array['events']) > 0 ) {
    elseif($postback == "Data 2") {
     foreach ($request_array['events'] as $event) {
          $reply_message = '';
-         $reply_token = "Ca106f3bc4d5fca2bdcac81cb62a393f6";
+         $reply_token = $event['replyToken'];
          $text = $event['message']['text'];
          $data = [
-             'groupId' => $reply_token,
+             'replyToken' => $reply_token,
              //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
              'messages' => [['type' => 'text', 'text' => $mass ]]
          ];
@@ -99,10 +99,10 @@ if ( sizeof($request_array['events']) > 0 ) {
    elseif($postback == "Data 3") {
     foreach ($request_array['events'] as $event) {
          $reply_message = '';
-         $reply_token = "Ca106f3bc4d5fca2bdcac81cb62a393f6";
+         $reply_token = $event['replyToken'];
          $text = $event['message']['text'];
          $data = [
-             'groupId' => $reply_token,
+             'replyToken' => $reply_token,
              //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
              'messages' => [['type' => 'text', 'text' => $mass ]]
          ];
@@ -115,10 +115,10 @@ if ( sizeof($request_array['events']) > 0 ) {
   if(strpos($string, $word) === FALSE) {
    foreach ($request_array['events'] as $event) {
         $reply_message = '';
-        $reply_token = "Ca106f3bc4d5fca2bdcac81cb62a393f6";
+        $reply_token = $event['replyToken'];
         $text = $event['message']['text'];
         $data = [
-            'groupId' => $reply_token,
+            'replyToken' => $reply_token,
             'messages' => [['type' => 'text', 'text' => json_encode($request_array).$masscheck ]]  //Debug Detail message
             //'messages' => [['type' => 'text', 'text' => $masscheck ]]
         ];
@@ -131,9 +131,9 @@ if ( sizeof($request_array['events']) > 0 ) {
     foreach ($request_array['events'] as $event) {
         error_log(json_encode($event));
         $reply_message = '';
-        $reply_token = "Ca106f3bc4d5fca2bdcac81cb62a393f6";
+        $reply_token = $event['replyToken'];
         $data = [
-            'groupId' => $reply_token,
+            'replyToken' => $reply_token,
             'messages' => [$jsonFlex]
         ];
         print_r($data);
