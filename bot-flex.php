@@ -11,6 +11,19 @@ $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 
+$user_id = $jsonData["events"][0]["source"]["userId"];
+$opts = [
+  "http" =>[
+  "header" => "Content-Type: application/json\r\n".'Authorization: Bearer ' . $ACCESS_TOKEN
+  ]
+  ];
+  $context = stream_context_create($opts);
+  $profile_json = file_get_contents('https://api.line.me/v2/bot/profile/'.$user_id,false,$context);
+  $profile_array = json_decode($profile_json,true);
+  $pic_ = $profile_array[pictureUrl];
+  $name_ = $profile_array[displayName];
+  //$mass = $user_id.','.$message.','.$name_;
+
 $jsonFlex = [
    "type" => "template",
     "altText" => "แบบประเมินความพึงพอใจการให้บริการ",
@@ -48,6 +61,7 @@ $string = $request_array["events"][0]["message"]["text"];
 $word = "แจ้งเตือนการปิด CRQ";
 
 $postback = $request_array["events"][0]["postback"]["data"];
+$mass = $user_id.','.$pic_.','.$name_.','.$postback;
 
 if ( sizeof($request_array['events']) > 0 ) {
   if(strpos($string, $word) === FALSE) {
@@ -58,7 +72,7 @@ if ( sizeof($request_array['events']) > 0 ) {
         $data = [
             'replyToken' => $reply_token,
             //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
-            'messages' => [['type' => 'text', 'text' => $postback ]]
+            'messages' => [['type' => 'text', 'text' => $mass ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
