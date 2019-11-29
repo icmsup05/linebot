@@ -63,6 +63,7 @@ $word = "แจ้งเตือนการปิด CRQ";
 $postback = $request_array["events"][0]["postback"]["data"];
 $datetimenow = date("YmdHis");
 $mass = $datetimenow.','.$user_id.','.$name_.','.$pic_.','.$postback;
+$masscheck = $name_.','.$pic_;
 
 if ( sizeof($request_array['events']) > 0 ) {
   if(strpos($string, $word) === FALSE) {
@@ -72,8 +73,8 @@ if ( sizeof($request_array['events']) > 0 ) {
         $text = $event['message']['text'];
         $data = [
             'replyToken' => $reply_token,
-            //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
-            'messages' => [['type' => 'text', 'text' => $mass ]]
+            'messages' => [['type' => 'text', 'text' => json_encode($request_array).$masscheck ]]  //Debug Detail message
+            //'messages' => [['type' => 'text', 'text' => $masscheck ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
