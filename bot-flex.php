@@ -11,18 +11,18 @@ $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 
-$user_id = $jsonData["events"][0]["source"]["userId"];
+$user_id = $request_array["events"][0]["source"]["userId"];
 $opts = [
   "http" =>[
-  "header" => "Content-Type: application/json\r\n".'Authorization: Bearer ' . $ACCESS_TOKEN
+  "header" => 'Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN
   ]
   ];
   $context = stream_context_create($opts);
   $profile_json = file_get_contents('https://api.line.me/v2/bot/profile/'.$user_id,false,$context);
   $profile_array = json_decode($profile_json,true);
-  $pic_ = $profile_array[pictureUrl];
-  $name_ = $profile_array[displayName];
-  //$mass = $user_id.','.$message.','.$name_;
+  $pic_ = $profile_array['pictureUrl'];
+  $name_ = $profile_array['displayName'];
+//$mass = $user_id.','.$message.','.$name_;
 
 $jsonFlex = [
    "type" => "template",
