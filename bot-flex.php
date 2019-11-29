@@ -47,7 +47,7 @@ $jsonFlex = [
 $string = $request_array["events"][0]["message"]["text"];
 $word = "แจ้งเตือนการปิด CRQ";
 
-//$postback = $request_array["events"][0]["actions"]["postback"];
+$postback = $request_array["events"][0]["postback"]["data"];
 
 if ( sizeof($request_array['events']) > 0 ) {
   if(strpos($string, $word) === FALSE) {
@@ -57,8 +57,8 @@ if ( sizeof($request_array['events']) > 0 ) {
         $text = $event['message']['text'];
         $data = [
             'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
-            //'messages' => [['type' => 'text', 'text' => $text ]]
+            //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
+            'messages' => [['type' => 'text', 'text' => $postback ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
