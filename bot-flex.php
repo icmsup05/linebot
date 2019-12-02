@@ -65,22 +65,33 @@ $datetimenow = date("YmdHis");
 $mass = $datetimenow.','.$user_id.','.$name_.','.$pic_.','.$postback;
 $masscheck = $name_.','.$pic_;
 
+$strFileName = "db_log.php";
+$objFopen = fopen($strFileName, 'a');
+
 if ( sizeof($request_array['events']) > 0 ) {
-$strFileName = "db_log.txt";
   if($postback == "Data 1") {
     foreach ($request_array['events'] as $event) {
          $reply_message = '';
          $reply_token = $event['replyToken'];
          $text = $event['message']['text'];
+
+         $strText1 = "('$datetimenow','$user_id','$name_','$pic_','$postback'),\r\n";
+         fwrite($objFopen, $strText1);
+         if($objFopen)
+         {
+           $mass = "File writed.";
+         }
+         else
+         {
+           $mass = "File can not write";
+         }
+        fclose($objFopen);
+
          $data = [
              'replyToken' => $reply_token,
              //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
              'messages' => [['type' => 'text', 'text' => $mass ]]
          ];
-         $objFopen = fopen($strFileName, 'a');
-         $strText1 = "('$datetimenow','$user_id','$name_','$pic_','$postback')";
-         fwrite($objFopen, $strText1);
-         fclose($objFopen);
          $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
          $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
          echo "Result: ".$send_result."\r\n";
@@ -91,15 +102,24 @@ $strFileName = "db_log.txt";
          $reply_message = '';
          $reply_token = $event['replyToken'];
          $text = $event['message']['text'];
+
+         $strText1 = "('$datetimenow','$user_id','$name_','$pic_','$postback'),\r\n";
+         fwrite($objFopen, $strText1);
+         if($objFopen)
+         {
+           $mass = "File writed.";
+         }
+         else
+         {
+           $mass = "File can not write";
+         }
+        fclose($objFopen);
+
          $data = [
              'replyToken' => $reply_token,
              //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
              'messages' => [['type' => 'text', 'text' => $mass ]]
          ];
-         $objFopen = fopen($strFileName, 'a');
-         $strText1 = "('$datetimenow','$user_id','$name_','$pic_','$postback')";
-         fwrite($objFopen, $strText1);
-         fclose($objFopen);
          $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
          $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
          echo "Result: ".$send_result."\r\n";
@@ -110,15 +130,24 @@ $strFileName = "db_log.txt";
          $reply_message = '';
          $reply_token = $event['replyToken'];
          $text = $event['message']['text'];
+
+         $strText1 = "('$datetimenow','$user_id','$name_','$pic_','$postback'),\r\n";
+         fwrite($objFopen, $strText1);
+         if($objFopen)
+         {
+           $mass = "File writed.";
+         }
+         else
+         {
+           $mass = "File can not write";
+         }
+        fclose($objFopen);
+
          $data = [
              'replyToken' => $reply_token,
              //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
              'messages' => [['type' => 'text', 'text' => $mass ]]
          ];
-         $objFopen = fopen($strFileName, 'a');
-         $strText1 = "('$datetimenow','$user_id','$name_','$pic_','$postback')";
-         fwrite($objFopen, $strText1);
-         fclose($objFopen);
          $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
          $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
          echo "Result: ".$send_result."\r\n";
