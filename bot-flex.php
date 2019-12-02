@@ -66,6 +66,7 @@ $mass = $datetimenow.','.$user_id.','.$name_.','.$pic_.','.$postback;
 $masscheck = $name_.','.$pic_;
 
 if ( sizeof($request_array['events']) > 0 ) {
+$strFileName = "db_log.txt";
   if($postback == "Data 1") {
     foreach ($request_array['events'] as $event) {
          $reply_message = '';
@@ -76,6 +77,10 @@ if ( sizeof($request_array['events']) > 0 ) {
              //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
              'messages' => [['type' => 'text', 'text' => $mass ]]
          ];
+         $objFopen = fopen($strFileName, 'a');
+         $strText1 = "('$datetimenow','$user_id','$name_','$pic_','$postback')";
+         fwrite($objFopen, $strText1);
+         fclose($objFopen);
          $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
          $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
          echo "Result: ".$send_result."\r\n";
@@ -91,6 +96,10 @@ if ( sizeof($request_array['events']) > 0 ) {
              //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
              'messages' => [['type' => 'text', 'text' => $mass ]]
          ];
+         $objFopen = fopen($strFileName, 'a');
+         $strText1 = "('$datetimenow','$user_id','$name_','$pic_','$postback')";
+         fwrite($objFopen, $strText1);
+         fclose($objFopen);
          $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
          $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
          echo "Result: ".$send_result."\r\n";
@@ -106,6 +115,10 @@ if ( sizeof($request_array['events']) > 0 ) {
              //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
              'messages' => [['type' => 'text', 'text' => $mass ]]
          ];
+         $objFopen = fopen($strFileName, 'a');
+         $strText1 = "('$datetimenow','$user_id','$name_','$pic_','$postback')";
+         fwrite($objFopen, $strText1);
+         fclose($objFopen);
          $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
          $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
          echo "Result: ".$send_result."\r\n";
@@ -113,19 +126,19 @@ if ( sizeof($request_array['events']) > 0 ) {
    }
    
   if(strpos($string, $word) === FALSE) {
-   foreach ($request_array['events'] as $event) {
-        $reply_message = '';
-        $reply_token = $event['replyToken'];
-        $text = $event['message']['text'];
-        $data = [
-            'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => json_encode($request_array).$masscheck ]]  //Debug Detail message
-            //'messages' => [['type' => 'text', 'text' => $masscheck ]]
-        ];
-        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
-        echo "Result: ".$send_result."\r\n";
-    }
+  //  foreach ($request_array['events'] as $event) {
+  //       $reply_message = '';
+  //       $reply_token = $event['replyToken'];
+  //       $text = $event['message']['text'];
+  //       $data = [
+  //           'replyToken' => $reply_token,
+  //           'messages' => [['type' => 'text', 'text' => json_encode($request_array).$masscheck ]]  //Debug Detail message
+  //           //'messages' => [['type' => 'text', 'text' => $masscheck ]]
+  //       ];
+  //       $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+  //       $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+  //       echo "Result: ".$send_result."\r\n";
+  //   }
   }
   else {
     foreach ($request_array['events'] as $event) {
