@@ -33,7 +33,7 @@ $mass = $datetimenow.','.$user_id.','.$name_.','.$pic_;
 $masscheck = $name_.','.$pic_;
   
 if ( sizeof($request_array['events']) > 0 ) {
-
+  if($user_id != 'Ubbf112e041afc53cf84061c42561a5e3' || $user_id != 'Ub257e0ce1beef10a865e9809bf639be5') {
     foreach ($request_array['events'] as $event) {
 
         $reply_message = '';
@@ -42,12 +42,12 @@ if ( sizeof($request_array['events']) > 0 ) {
         $text = $event['message']['text'];
         $data = [
             'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
-            // 'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
-            // // ['type' => 'text', 'text' => $text ],
-            // // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
-            // ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.' )' ],
-            // ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'จ.-ศ.เวลา9.00-17.30น.' ]]
+            //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
+            'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
+            // ['type' => 'text', 'text' => $text ],
+            // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
+            ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.' )' ],
+            ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'จ.-ศ.เวลา9.00-17.30น.' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 
@@ -55,6 +55,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 
         echo "Result: ".$send_result."\r\n";
     }
+  }
 }
 
 echo "OK";
