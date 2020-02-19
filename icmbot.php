@@ -43,9 +43,9 @@ if ( sizeof($request_array['events']) > 0 ) {
         $data = [
             'replyToken' => $reply_token,
             //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  Debug Detail message
-            'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ]],
-            [['type' => 'text', 'text' => $text."\r\n".$user_id.','.$name_ ]],
-            [['type' => 'text', 'text' => $user_id.','.$name_ ]]
+            'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
+            ['type' => 'text', 'text' => $text."\r\n".$user_id.','.$name_ ],
+            ['type' => 'text', 'text' => $user_id.','.$name_ ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 
