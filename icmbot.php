@@ -27,14 +27,18 @@ $string = $request_array["events"][0]["message"]["text"];
 // $word = "แจ้งเตือนการปิด CRQ";
   
 // $postback = $request_array["events"][0]["postback"]["data"];
-$datetimenow = date("YmdHis");
+//$datetimenow = date("YmdHis");
+$timenow = date("H:i:s");
 $mass = $datetimenow.','.$user_id.','.$name_.','.$pic_;
 //.','.$postback;
 $masscheck = $name_.','.$pic_;
+
+if($timenow >= "17:00" && $timenow <= "17:30" ) {
   
+}else{ 
 if ( sizeof($request_array['events']) > 0 ) {
   if($user_id == 'Ubbf112e041afc53cf84061c42561a5e3' || $user_id == 'Ub257e0ce1beef10a865e9809bf639be5' 
-  || $user_id == 'Uf4a6346462b6134e9dc7508e87976386') {
+  || $user_id == 'Uf4a6346462b6134e9dc7508e87976386)' ) {
   }
   else{
     foreach ($request_array['events'] as $event) {
@@ -60,7 +64,7 @@ if ( sizeof($request_array['events']) > 0 ) {
     }
   }
 }
-
+}
 echo "OK";
 
 function send_reply_message($url, $post_header, $post_body)
