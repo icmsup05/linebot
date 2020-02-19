@@ -22,157 +22,40 @@ $opts = [
   $profile_array = json_decode($profile_json,true);
   $pic_ = $profile_array["pictureUrl"];
   $name_ = $profile_array["displayName"];
-
-
-$jsonFlex = [
-   "type" => "template",
-    "altText" => "แบบประเมินความพึงพอใจการให้บริการ",
-    "template" => [
-      "type" => "carousel",
-      "actions" => [],
-      "columns" => [
-        [
-          "thumbnailImageUrl" => "https://sv1.picz.in.th/images/2019/11/22/gevr58.png",
-          "title" => "แบบประเมินความพึงพอใจการให้บริการ",
-          "text" => "ระดับความพึงพอใจ",
-          "actions" => [
-            [
-              "type" => "postback",
-              "label" => "1",
-              "data" => "Data 1"
-            ],
-            [
-              "type" => "postback",
-              "label" => "2",
-              "data" => "Data 2"
-            ],
-            [
-              "type" => "postback",
-              "label" => "3",
-              "data" => "Data 3"
-            ]
-          ]
-        ]
-      ]
-    ]
-];
-
+  
 $string = $request_array["events"][0]["message"]["text"];
-$word = "แจ้งเตือนการปิด CRQ";
-
-$postback = $request_array["events"][0]["postback"]["data"];
+// $word = "แจ้งเตือนการปิด CRQ";
+  
+// $postback = $request_array["events"][0]["postback"]["data"];
 $datetimenow = date("YmdHis");
-$mass = $datetimenow.','.$user_id.','.$name_.','.$pic_.','.$postback;
+$mass = $datetimenow.','.$user_id.','.$name_.','.$pic_;
+//.','.$postback;
 $masscheck = $name_.','.$pic_;
-
-function send_line_notify($message,$token)
-    {
-    $ch = curl_init();
-    curl_setopt( $ch, CURLOPT_URL, "https://notify-api.line.me/api/notify");
-    curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 0);
-    curl_setopt( $ch, CURLOPT_POST, 1);
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, "message=$message");
-    curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
-    $headers = array( "Content-type: application/x-www-form-urlencoded", "Authorization: Bearer $token", );
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
-    $result = curl_exec( $ch );
-    curl_close( $ch );
-    return $result;
-    }
-    $token = "WEPEymkSyuctKVUn7UchhuH8fp5b8GcQkvthXrjyb0t";
-
+  
 if ( sizeof($request_array['events']) > 0 ) {
-  if($postback == "Data 1") {
+
     foreach ($request_array['events'] as $event) {
-         $reply_message = '';
-         $reply_token = $event['replyToken'];
-         $text = $event['message']['text'];
-         $data = [
-             'replyToken' => $reply_token,
-             //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
-             //'messages' => [['type' => 'text', 'text' => $mass ]]
-         ];
 
-         $message = "('$datetimenow','$user_id','$name_','$pic_','$postback')";
-         send_line_notify($message,$token);
-
-         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
-         echo "Result: ".$send_result."\r\n";
-     }
-   }
-   elseif($postback == "Data 2") {
-    foreach ($request_array['events'] as $event) {
-         $reply_message = '';
-         $reply_token = $event['replyToken'];
-         $text = $event['message']['text'];
-         $data = [
-             'replyToken' => $reply_token,
-             //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
-             //'messages' => [['type' => 'text', 'text' => $mass ]]
-         ];
-
-         $message = "('$datetimenow','$user_id','$name_','$pic_','$postback')";
-         send_line_notify($message,$token);
-
-         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
-         echo "Result: ".$send_result."\r\n";
-     }
-   }
-   elseif($postback == "Data 3") {
-    foreach ($request_array['events'] as $event) {
-         $reply_message = '';
-         $reply_token = $event['replyToken'];
-         $text = $event['message']['text'];
-         $data = [
-             'replyToken' => $reply_token,
-             //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
-             //'messages' => [['type' => 'text', 'text' => $mass ]]
-         ];
-
-         $message = "('$datetimenow','$user_id','$name_','$pic_','$postback')";
-         send_line_notify($message,$token);
-
-         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
-         echo "Result: ".$send_result."\r\n";
-     }
-   }
-   
-  if(strpos($string, $word) === FALSE) {
-  //  foreach ($request_array['events'] as $event) {
-  //       $reply_message = '';
-  //       $reply_token = $event['replyToken'];
-  //       $text = $event['message']['text'];
-  //       $data = [
-  //           'replyToken' => $reply_token,
-  //           'messages' => [['type' => 'text', 'text' => json_encode($request_array).$masscheck ]]  //Debug Detail message
-  //           //'messages' => [['type' => 'text', 'text' => $masscheck ]]
-  //       ];
-  //       $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-  //       $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
-  //       echo "Result: ".$send_result."\r\n";
-  //   }
-  }
-  else {
-    foreach ($request_array['events'] as $event) {
-        error_log(json_encode($event));
         $reply_message = '';
         $reply_token = $event['replyToken'];
+
+        $text = $event['message']['text'];
         $data = [
             'replyToken' => $reply_token,
-            'messages' => [$jsonFlex]
+            //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  Debug Detail message
+            'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
+            // ['type' => 'text', 'text' => $text ],
+            // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
+            ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.' )' ],
+            ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'จ.-ศ.เวลา9.00-17.30น.' ],
+            ['type' => 'text', 'text' => json_encode($request_array) ]]
         ];
-        print_r($data);
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+
         echo "Result: ".$send_result."\r\n";
-        
     }
-  }
 }
 
 echo "OK";
