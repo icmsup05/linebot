@@ -5,7 +5,6 @@ $API_URL = 'https://api.line.me/v2/bot/message';
 $ACCESS_TOKEN = 'wcbYASYnOZ9dWKt8Nt2tmnXaD6tJtPnRMGrNBZ7L4J1fJR6fgZsNnGmCu5G7ZISnLXFi16+sWIj8NnyIwgpCXCAIVWnEL0nOtj0sMHPJR9Fc8DM1ceVzrC6r9TEjUrYcThIVU4vvHiwGL15tUE85lAdB04t89/1O/w1cDnyilFU='; 
 $channelSecret = '1c51653de6cd0f91323923fab0ffde9a';
 
-
 $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 
 $request = file_get_contents('php://input');   // Get request content
@@ -29,23 +28,22 @@ $string = $request_array["events"][0]["message"]["text"];
 // $postback = $request_array["events"][0]["postback"]["data"];
 //$datetimenow = date("YmdHis");
 $timenow = date("H:i:s");
+$datenow = date("D");
 $mass = $datetimenow.','.$user_id.','.$name_.','.$pic_;
 //.','.$postback;
 $masscheck = $name_.','.$pic_;
 
-if($timenow >= "17:00" && $timenow <= "17:30" ) {
-  
-}else{ 
-if ( sizeof($request_array['events']) > 0 ) {
-  if($user_id == 'Ubbf112e041afc53cf84061c42561a5e3' || $user_id == 'Ub257e0ce1beef10a865e9809bf639be5' 
-  || $user_id == 'Uf4a6346462b6134e9dc7508e87976386)' ) {
-  }
-  else{
-    foreach ($request_array['events'] as $event) {
+//if ( sizeof($request_array['events']) > 0 )
 
+if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array['events'][0]['sticker']) > 0 ) {
+  if($user_id == 'Ubbf112e041afc53cf84061c42561a5e3' || $user_id == 'Ub257e0ce1beef10a865e9809bf639be5' 
+  || $user_id == 'Uf4a6346462b6134e9dc7508e87976386)') {
+    //Do Nothing
+  }else{
+    if($datenow = "Sat" || $datenow = "Sun"){
+      foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
-
         $text = $event['message']['text'];
         $data = [
             'replyToken' => $reply_token,
@@ -57,13 +55,49 @@ if ( sizeof($request_array['events']) > 0 ) {
             ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'จ.-ศ.เวลา9.00-17.30น.' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
-
         echo "Result: ".$send_result."\r\n";
+      }
+    }elseif($timenow >= "12:01" && $timenow <= "12:59"){
+      foreach ($request_array['events'] as $event) {
+        $reply_message = '';
+        $reply_token = $event['replyToken'];
+        $text = $event['message']['text'];
+        $data = [
+            'replyToken' => $reply_token,
+            //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
+            'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
+            // ['type' => 'text', 'text' => $text ],
+            // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
+            ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')' ],
+            ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'เวลา 13.00น.' ]]
+        ];
+        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+        echo "Result: ".$send_result."\r\n";
+      }
+    }elseif($timenow >= "08:45" && $timenow <= "18:01"){
+      //Do Nothing
+    }else{
+      foreach ($request_array['events'] as $event) {
+        $reply_message = '';
+        $reply_token = $event['replyToken'];
+        $text = $event['message']['text'];
+        $data = [
+            'replyToken' => $reply_token,
+            //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
+            'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
+            // ['type' => 'text', 'text' => $text ],
+            // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
+            ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')' ],
+            ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'จ.-ศ.เวลา9.00-17.30น.' ]]
+        ];
+        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+        echo "Result: ".$send_result."\r\n";
+      }
     }
   }
-}
 }
 echo "OK";
 
