@@ -40,7 +40,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
   || $user_id == 'Uf4a6346462b6134e9dc7508e87976386)') {
     //Do Nothing
   }else{
-    if($datenow == "Sat" || $datenow == "Sun"){
+    if($datenow = "Sat" || $datenow = "Sun"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
