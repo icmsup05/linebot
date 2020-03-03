@@ -102,7 +102,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $data = [
             'replyToken' => $reply_token,
             //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
-            'messages' => [['type' => 'text', 'text' => date("w").' = '.$datenow.' = วันจันทร์' ]]
+            'messages' => [['type' => 'text', 'text' => date("w").' = '.$datenow.' = '.date("D").' = '.date("l").' = วันจันทร์' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
@@ -116,7 +116,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $data = [
             'replyToken' => $reply_token,
             //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
-            'messages' => [['type' => 'text', 'text' => date("w").' = '.$datenow.' = วันอังคาร' ]]
+            'messages' => [['type' => 'text', 'text' => date("w").' = '.$datenow.' = '.date("D").' = '.date("l").' = วันอังคาร' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
@@ -130,7 +130,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $data = [
             'replyToken' => $reply_token,
             //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
-            'messages' => [['type' => 'text', 'text' => date("w").' = '.$datenow.' = วันพุธ' ]]
+            'messages' => [['type' => 'text', 'text' => date("w").' = '.$datenow.' = '.date("D").' = '.date("l").' = วันพุธ' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
