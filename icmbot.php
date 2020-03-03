@@ -102,13 +102,27 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $data = [
             'replyToken' => $reply_token,
             //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
-            'messages' => [['type' => 'text', 'text' => date("w").' = '.$datenow.' = วันอังคาร' ]]
+            'messages' => [['type' => 'text', 'text' => date("w").' = '.$datenow.' = วันจันทร์' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
       }
     }elseif($datenow == "2"){
+      foreach ($request_array['events'] as $event) {
+        $reply_message = '';
+        $reply_token = $event['replyToken'];
+        $text = $event['message']['text'];
+        $data = [
+            'replyToken' => $reply_token,
+            //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
+            'messages' => [['type' => 'text', 'text' => date("w").' = '.$datenow.' = วันอังคาร' ]]
+        ];
+        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+        echo "Result: ".$send_result."\r\n";
+      }
+    }elseif($datenow == "3"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
