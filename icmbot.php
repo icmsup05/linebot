@@ -94,7 +94,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
       }
-    }elseif($datenow == "1"){
+    }elseif($datenow == "Mon"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
@@ -108,7 +108,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
       }
-    }elseif($datenow == "2"){
+    }elseif($datenow == "Tue"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
@@ -122,7 +122,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
       }
-    }elseif($datenow == "3"){
+    }elseif($datenow == "Wed"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
