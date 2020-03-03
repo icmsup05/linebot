@@ -29,9 +29,9 @@ $string = $request_array["events"][0]["message"]["text"];
 //$datetimenow = date("YmdHis");
 $timenow = date("H:i:s");
 $datenow = date("w");
-$mass = $datetimenow.','.$user_id.','.$name_.','.$pic_;
+//$mass = $datetimenow.','.$user_id.','.$name_.','.$pic_;
 //.','.$postback;
-$masscheck = $name_.','.$pic_;
+//$masscheck = $name_.','.$pic_;
 
 //if ( sizeof($request_array['events']) > 0 )
 
@@ -51,7 +51,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
             'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
             // ['type' => 'text', 'text' => $text ],
             // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
-            ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')'.' //'.$datenow.' '.$timenow ],
+            ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')'.' '.$datenow.' '.$timenow ],
             ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'จ.-ศ.เวลา9.00-17.30น.' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
