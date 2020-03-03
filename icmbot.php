@@ -40,7 +40,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
   || $user_id == 'Uf4a6346462b6134e9dc7508e87976386)') {
     //Do Nothing
   }else{
-    if($datenow = "Sat" || $datenow = "Sun"){
+    if($datenow == "Sat" || $datenow == "Sun"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
@@ -89,6 +89,34 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
             // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
             ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')'.$datenow.' '.$timenow ],
             ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'จ.-ศ.เวลา9.00-17.30น.' ]]
+        ];
+        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+        echo "Result: ".$send_result."\r\n";
+      }
+    }elseif($datenow == "1"){
+      foreach ($request_array['events'] as $event) {
+        $reply_message = '';
+        $reply_token = $event['replyToken'];
+        $text = $event['message']['text'];
+        $data = [
+            'replyToken' => $reply_token,
+            //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
+            'messages' => [['type' => 'text', 'text' => date("w").' = '.$datenow.' = วันอังคาร' ]]
+        ];
+        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+        echo "Result: ".$send_result."\r\n";
+      }
+    }elseif($datenow == "2"){
+      foreach ($request_array['events'] as $event) {
+        $reply_message = '';
+        $reply_token = $event['replyToken'];
+        $text = $event['message']['text'];
+        $data = [
+            'replyToken' => $reply_token,
+            //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
+            'messages' => [['type' => 'text', 'text' => date("w").' = '.$datenow.' = วันพุธ' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
