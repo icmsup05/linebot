@@ -28,7 +28,7 @@ $string = $request_array["events"][0]["message"]["text"];
 // $postback = $request_array["events"][0]["postback"]["data"];
 //$datetimenow = date("YmdHis");
 $timenow = date("H:i:s");
-$datenow = date("D");
+$datenow = date("l");
 $mass = $datetimenow.','.$user_id.','.$name_.','.$pic_;
 //.','.$postback;
 $masscheck = $name_.','.$pic_;
