@@ -103,7 +103,8 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $data = [
             'replyToken' => $reply_token,
             'messages' => [['type' => 'text', 'text' => json_encode($request_array) ],  //Debug Detail message
-            ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')'."\r\n".$datenow.' - '.$timenow ]]
+            ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')'."\r\n".$datenow.' - '.$timenow ],
+            ['type' => 'text', 'text' => "$reply_message\r\n$reply_token\r\n$text\r\n$data" ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
