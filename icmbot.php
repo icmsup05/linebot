@@ -35,6 +35,10 @@ $datenow = date("D");
 
 //if ( sizeof($request_array['events']) > 0 )
 
+// Ubbf112e041afc53cf84061c42561a5e3 = Support04
+// Ub257e0ce1beef10a865e9809bf639be5 = Support06
+// Uf4a6346462b6134e9dc7508e87976386 = PMC
+
 if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array['events'][0]['sticker']) > 0 ) {
   if($user_id == 'Ubbf112e041afc53cf84061c42561a5e3' || $user_id == 'Ub257e0ce1beef10a865e9809bf639be5' 
   || $user_id == 'Uf4a6346462b6134e9dc7508e87976386') {
