@@ -76,7 +76,25 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
       }
-    }elseif($timenow >= "16:20:00" && $timenow <= "16:59:59"){
+    }elseif($timenow >= "16:20:00" && $timenow <= "16:39:59"){
+      foreach ($request_array['events'] as $event) {
+        $reply_message = '';
+        $reply_token = $event['replyToken'];
+        $text = $event['message']['text'];
+        $data = [
+            'replyToken' => $reply_token,
+            //'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  //Debug Detail message
+            'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
+            // ['type' => 'text', 'text' => $text ],
+            // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
+            ['type' => 'text', 'text' => 'สวัสดีครับ ('.$datenow.' - '.$timenow.')' ],
+            ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'จ.-ศ.เวลา9.00-17.30น.' ]]
+        ];
+        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+        echo "Result: ".$send_result."\r\n";
+      }
+    }elseif($timenow >= "16:40:00" && $timenow <= "16:59:59"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
