@@ -58,7 +58,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
       }
-    }elseif($timenow >= "16:15:00" && $timenow <= "16:19:59"){
+    }elseif($timenow >= "12:01:00" && $timenow <= "12:59:59"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
@@ -76,7 +76,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
       }
-    }elseif($timenow >= "16:20:00" && $timenow <= "16:39:59"){
+    }elseif($timenow >= "18:01:00" && $timenow <= "23:59:59"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
@@ -94,7 +94,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
       }
-    }elseif($timenow >= "16:40:00" && $timenow <= "16:59:59"){
+    }elseif($timenow >= "00:00:00" && $timenow <= "08:44:59"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
@@ -120,7 +120,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $text = $event['message']['text'];
         $data = [
             'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => 'Do Nothing ('.$datenow.' - '.$timenow.')' ]]
+            'messages' => [['type' => 'text', 'text' => 'Do Nothing ('.$datenow.' - '.$timenow.')'."\r\n".$name_.' ('.$user_id.')' ]]
             // 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ],  //Debug Detail message
             // ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')'."\r\n".$datenow.' - '.$timenow ],
             // ['type' => 'text', 'text' => "$reply_message\r\n$reply_token\r\n$text\r\n$data" ]]
