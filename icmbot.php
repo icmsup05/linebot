@@ -59,7 +59,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
             'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
             // ['type' => 'text', 'text' => $text ],
             // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
-            ['type' => 'text', 'text' => 'สวัสดีครับ ('.$datenow.' - '.$timenow.')'],
+            ['type' => 'text', 'text' => 'สวัสดีครับ' ],
             ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'จ.-ศ.เวลา9.00-17.30น.' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
@@ -77,7 +77,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
             'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
             // ['type' => 'text', 'text' => $text ],
             // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
-            ['type' => 'text', 'text' => 'สวัสดีครับ ('.$datenow.' - '.$timenow.')' ],
+            ['type' => 'text', 'text' => 'สวัสดีครับ' ],
             ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'เวลา 13.00น.' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
@@ -95,7 +95,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
             'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
             // ['type' => 'text', 'text' => $text ],
             // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
-            ['type' => 'text', 'text' => 'สวัสดีครับ ('.$datenow.' - '.$timenow.')' ],
+            ['type' => 'text', 'text' => 'สวัสดีครับ' ],
             ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'จ.-ศ.เวลา9.00-17.30น.' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
@@ -113,7 +113,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
             'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
             // ['type' => 'text', 'text' => $text ],
             // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
-            ['type' => 'text', 'text' => 'สวัสดีครับ ('.$datenow.' - '.$timenow.')' ],
+            ['type' => 'text', 'text' => 'สวัสดีครับ' ],
             ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'จ.-ศ.เวลา9.00-17.30น.' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
