@@ -51,14 +51,14 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
             'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
             // ['type' => 'text', 'text' => $text ],
             // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
-            ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')'.' '.$datenow.' '.$timenow ],
+            ['type' => 'text', 'text' => 'สวัสดีครับ ('.$datenow.' - '.$timenow.')'],
             ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'จ.-ศ.เวลา9.00-17.30น.' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
       }
-    }elseif($timenow >= "12:01:00" && $timenow <= "12:59:59"){
+    }elseif($timenow >= "16:01" && $timenow <= "16:09"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
@@ -69,14 +69,14 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
             'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
             // ['type' => 'text', 'text' => $text ],
             // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
-            ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')'.' '.$timenow.$datenow ],
+            ['type' => 'text', 'text' => 'สวัสดีครับ ('.$datenow.' - '.$timenow.')' ],
             ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'เวลา 13.00น.' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
       }
-    }elseif($timenow >= "18:01:00" && $timenow <= "08:45:59"){
+    }elseif($timenow >= "16:10" && $timenow <= "17:10"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
@@ -87,7 +87,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
             'messages' => [['type' => 'sticker', 'packageId' => '11537', 'stickerId' => '52002738' ],
             // ['type' => 'text', 'text' => $text ],
             // ['type' => 'text', 'text' => $user_id.','.$name_ ]]
-            ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')'.$datenow.' '.$timenow ],
+            ['type' => 'text', 'text' => 'สวัสดีครับ ('.$datenow.' - '.$timenow.')' ],
             ['type' => 'text', 'text' => 'รับเรื่องไว้แล้วครับ'."\r\n".'ขออนุญาตให้เจ้าหน้าที่ติดต่อกลับ'."\r\n".'จ.-ศ.เวลา9.00-17.30น.' ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
@@ -102,9 +102,10 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $text = $event['message']['text'];
         $data = [
             'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => json_encode($request_array) ],  //Debug Detail message
-            ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')'."\r\n".$datenow.' - '.$timenow ],
-            ['type' => 'text', 'text' => "$reply_message\r\n$reply_token\r\n$text\r\n$data" ]]
+            'messages' => [['type' => 'text', 'text' => 'Do Nothing ('.$datenow.' - '.$timenow.')' ]]
+            // 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ],  //Debug Detail message
+            // ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')'."\r\n".$datenow.' - '.$timenow ],
+            // ['type' => 'text', 'text' => "$reply_message\r\n$reply_token\r\n$text\r\n$data" ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
