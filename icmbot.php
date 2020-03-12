@@ -58,7 +58,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
       }
-    }elseif($timenow >= "16:01" && $timenow <= "16:09"){
+    }elseif($timenow >= "16:15:00" && $timenow <= "16:19:59"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
@@ -76,7 +76,7 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
       }
-    }elseif($timenow >= "16:10" && $timenow <= "17:10"){
+    }elseif($timenow >= "16:20:00" && $timenow <= "16:59:59"){
       foreach ($request_array['events'] as $event) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
