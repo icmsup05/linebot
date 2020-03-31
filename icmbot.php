@@ -2,8 +2,8 @@
 date_default_timezone_set("Asia/Bangkok");
 
 $API_URL = 'https://api.line.me/v2/bot/message';
-$ACCESS_TOKEN = 'wcbYASYnOZ9dWKt8Nt2tmnXaD6tJtPnRMGrNBZ7L4J1fJR6fgZsNnGmCu5G7ZISnLXFi16+sWIj8NnyIwgpCXCAIVWnEL0nOtj0sMHPJR9Fc8DM1ceVzrC6r9TEjUrYcThIVU4vvHiwGL15tUE85lAdB04t89/1O/w1cDnyilFU='; 
-$channelSecret = '1c51653de6cd0f91323923fab0ffde9a';
+$ACCESS_TOKEN = 'wbJNzH9yeCkaDbD+ynNTi9HBvWY6OEGZANTu0X5La0UWF9GbfyjdHRK6TvOjJliXwA5w6f05uGCWdMM3ET6B7sq6Z0+PJPIjLgbXZbz8SyjZN6QJQTKA6siKlZdQgS6rCJSxcPwgSSiEeimjyANdkwdB04t89/1O/w1cDnyilFU='; 
+$channelSecret = 'ea98cbd661d96335c9eb90f0e449d11b';
 
 $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 
