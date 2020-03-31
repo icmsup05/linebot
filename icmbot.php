@@ -121,22 +121,22 @@ if (sizeof($request_array['events'][0]['message']) > 0 || sizeof($request_array[
         echo "Result: ".$send_result."\r\n";
       }
     }else{
-//       //Do Nothing
-//       foreach ($request_array['events'] as $event) {
-//         $reply_message = '';
-//         $reply_token = $event['replyToken'];
-//         $text = $event['message']['text'];
-//         $data = [
-//             'replyToken' => $reply_token,
-//             'messages' => [['type' => 'text', 'text' => 'Do Nothing ('.$datenow.' - '.$timenow.')'."\r\n".$name_.' ('.$user_id.')' ]]
-//             // 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ],  //Debug Detail message
-//             // ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')'."\r\n".$datenow.' - '.$timenow ],
-//             // ['type' => 'text', 'text' => "$reply_message\r\n$reply_token\r\n$text\r\n$data" ]]
-//         ];
-//         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-//         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
-//         echo "Result: ".$send_result."\r\n";
-//       }
+      //Do Nothing
+      foreach ($request_array['events'] as $event) {
+        $reply_message = '';
+        $reply_token = $event['replyToken'];
+        $text = $event['message']['text'];
+        $data = [
+            'replyToken' => $reply_token,
+            'messages' => [['type' => 'text', 'text' => 'Do Nothing ('.$datenow.' - '.$timenow.')'."\r\n".$name_.' ('.$user_id.')' ]]
+            // 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ],  //Debug Detail message
+            // ['type' => 'text', 'text' => 'สวัสดีครับคุณ '.$name_.' ('.$user_id.')'."\r\n".$datenow.' - '.$timenow ],
+            // ['type' => 'text', 'text' => "$reply_message\r\n$reply_token\r\n$text\r\n$data" ]]
+        ];
+        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+        echo "Result: ".$send_result."\r\n";
+      }
     }
   }
 }
